@@ -1,0 +1,56 @@
+﻿using System;
+
+public class Produto
+{
+    public int CodigoProduto { get; set; }
+    public string NomeProduto { get; set; }
+    public double Preco { get; set; }
+    public int QuantidadeEstoque { get; private set; }
+
+    public void ReceberDados()
+    {
+        Console.Write("Digite o código do produto: ");
+        CodigoProduto = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite o nome do produto: ");
+        NomeProduto = Console.ReadLine();
+
+        Console.Write("Digite o preço do produto: ");
+        Preco = double.Parse(Console.ReadLine());
+
+        Console.Write("Digite a quantidade inicial em estoque: ");
+        QuantidadeEstoque = int.Parse(Console.ReadLine());
+    }
+
+    public void AdicionarEstoque()
+    {
+        Console.Write("Digite a quantidade a adicionar: ");
+        int qtd = int.Parse(Console.ReadLine());
+        QuantidadeEstoque += qtd;
+        Console.WriteLine($"Estoque atualizado. Quantidade atual: {QuantidadeEstoque}");
+    }
+
+    public void RemoverEstoque()
+    {
+        Console.Write("Digite a quantidade a remover: ");
+        int qtd = int.Parse(Console.ReadLine());
+
+        if (qtd <= QuantidadeEstoque)
+        {
+            QuantidadeEstoque -= qtd;
+            Console.WriteLine($"Remoção realizada. Quantidade atual: {QuantidadeEstoque}");
+        }
+        else
+        {
+            Console.WriteLine("Quantidade insuficiente em estoque.");
+        }
+    }
+
+    public void MostrarProduto()
+    {
+        Console.WriteLine($"Código: {CodigoProduto}");
+        Console.WriteLine($"Produto: {NomeProduto}");
+        Console.WriteLine($"Preço: R$ {Preco:F2}");
+        Console.WriteLine($"Quantidade em estoque: {QuantidadeEstoque}");
+    }
+}

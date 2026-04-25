@@ -1,0 +1,23 @@
+﻿
+using ConsoleApp95;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Hospede hospede = new Hospede();
+        hospede.ReceberDados();
+        hospede.MostrarDados();
+        hospede.AtualizarTelefone("3499999-8888");
+        Reserva reserva = new Reserva();
+        reserva.ReceberDadosReserva();
+        reserva.CalcularTotal();
+        reserva.MostrarReserva();
+        reserva.AplicarDesconto(10);
+        reserva.MostrarReserva();
+        Console.ReadKey();
+    }
+}
+
+
+

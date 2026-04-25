@@ -1,0 +1,51 @@
+﻿using System;
+
+public class ContaBancaria
+{
+    public string NumeroConta { get; set; }
+    public string NomeTitular { get; set; }
+    public double Saldo { get; private set; }
+
+    public void ReceberDados()
+    {
+        Console.Write("Digite o número da conta: ");
+        NumeroConta = Console.ReadLine();
+
+        Console.Write("Digite o nome do titular: ");
+        NomeTitular = Console.ReadLine();
+
+        Console.Write("Digite o saldo inicial: ");
+        Saldo = double.Parse(Console.ReadLine());
+    }
+
+    public void Depositar()
+    {
+        Console.Write("Digite o valor do depósito: ");
+        double valor = double.Parse(Console.ReadLine());
+        Saldo += valor;
+        Console.WriteLine($"Depósito realizado. Saldo atual: {Saldo:F2}");
+    }
+
+    public void Sacar()
+    {
+        Console.Write("Digite o valor do saque: ");
+        double valor = double.Parse(Console.ReadLine());
+
+        if (valor <= Saldo)
+        {
+            Saldo -= valor;
+            Console.WriteLine($"Saque realizado. Saldo atual: {Saldo:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Saldo insuficiente para realizar o saque.");
+        }
+    }
+
+    public void MostrarSaldo()
+    {
+        Console.WriteLine($"Conta: {NumeroConta}");
+        Console.WriteLine($"Titular: {NomeTitular}");
+        Console.WriteLine($"Saldo atual: {Saldo:F2}");
+    }
+}

@@ -1,0 +1,20 @@
+﻿using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CalculadoraDeSalario calc = new CalculadoraDeSalario();
+
+        calc.ReceberDados();
+        calc.MostrarSalario();
+
+        calc.CalcularAumento(10);
+        calc.MostrarSalario();
+
+        calc.CalcularDesconto(5);
+        calc.MostrarSalario();
+
+        Console.ReadKey();
+    }
+}

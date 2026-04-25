@@ -1,0 +1,44 @@
+﻿using System;
+
+namespace ConsoleApp95
+{
+    public class Reserva
+    {
+        public int NumeroReserva { get; set; }
+        public int QuantidadeDiarias { get; set; }
+        public double ValorDiaria { get; set; }
+        public double ValorTotal { get; private set; }
+
+        public void ReceberDadosReserva()
+        {
+            Console.Write("Digite o número da reserva: ");
+            NumeroReserva = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite a quantidade de diárias: ");
+            QuantidadeDiarias = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor da diária: ");
+            ValorDiaria = double.Parse(Console.ReadLine());
+        }
+
+        public void CalcularTotal()
+        {
+            ValorTotal = QuantidadeDiarias * ValorDiaria;
+        }
+
+        public void AplicarDesconto(double percentual)
+        {
+            double desconto = ValorTotal * (percentual / 100);
+            ValorTotal -= desconto;
+            Console.WriteLine($"Desconto de {percentual}% aplicado. Valor total atualizado: R$ {ValorTotal:F2}");
+        }
+
+        public void MostrarReserva()
+        {
+            Console.WriteLine($"Número da reserva: {NumeroReserva}");
+            Console.WriteLine($"Quantidade de diárias: {QuantidadeDiarias}");
+            Console.WriteLine($"Valor da diária: R$ {ValorDiaria:F2}");
+            Console.WriteLine($"Valor total: R$ {ValorTotal:F2}");
+        }
+    }
+}

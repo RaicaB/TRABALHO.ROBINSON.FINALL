@@ -1,0 +1,45 @@
+﻿using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Text;
+
+using System;
+
+namespace ConsoleApp97
+{
+    internal class Entrega
+    {
+        public string Endereco { get; private set; }
+
+        private double distanciaKm;
+        public double DistanciaKm
+        {
+            get { return distanciaKm; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Distância não pode ser negativa.");
+                else
+                    distanciaKm = value;
+            }
+        }
+
+        public string TipoEntrega { get; set; }
+
+        public Entrega(string endereco, double distanciaKm, string tipoEntrega)
+        {
+            Endereco = endereco;
+            DistanciaKm = distanciaKm;
+            TipoEntrega = tipoEntrega;
+        }
+
+        public void ExibirDados()
+        {
+            Console.WriteLine($"Endereço: {Endereco}, Distância: {DistanciaKm} km, Tipo: {TipoEntrega}, Taxa: R$ {CalcularTaxaEntrega():F2}");
+        }
+
+        public double CalcularTaxaEntrega()
+        {
+            return DistanciaKm * 2; 
+        }
+    }
+}
